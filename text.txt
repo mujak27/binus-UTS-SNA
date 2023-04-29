@@ -1,0 +1,28 @@
+• Konten dari web harus di copy menggunakan perintah dari dalam dockerfile 
+• Database sql langsung di import ke dalam database ketika dockerfile dijalankan 
+• Isi dari content “redlock-web-2.0” adalah tampilan dari keseluruhan isi table “users” dengan format bebas dan tidak ada minimal data 
+• Command docker exec tidak boleh sama sekali dijalankan 
+• Command -v dari docker run tidak boleh dipakai, semua bisa dijalankan melalui dockerfile 
+
+
+
+docker build .
+docker run  --name testmysql6 -d b93
+docker exec -it 320 /bin/bash
+
+docker run  --name testmysql7 -p 3400:3306 -d b93
+docker run  --name testphp -p 3400:3400 -d b93
+
+
+docker run --network=br0 --name netphp -p 8000:80 -d 632
+docker run --network=br0 --name netmysq -d b93
+
+mysql -u root -h localhost -P 3400 -p
+
+
+docker network create \
+  --driver=bridge \
+  --subnet=172.28.0.0/16 \
+  --ip-range=172.28.5.0/24 \
+  --gateway=172.28.5.254 \
+  br0

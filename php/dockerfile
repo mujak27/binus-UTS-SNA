@@ -1,0 +1,18 @@
+# syntax=docker/dockerfile:1
+   
+# FROM php:8.0-apache
+FROM php:8.1.19RC1
+COPY ./app/ /app
+WORKDIR /app
+RUN chmod -R 774 .
+COPY /app/ /var/www/html/
+
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN apt-get update && apt-get upgrade -y
+
+CMD [ "php", "-S 127.0.0.1:3500" ]
+CMD  tail -f /dev/null
+
+# docker build -t irkimuzak/redlock:1.0
+# docker run -p 80:7077 -v ~/my-codebase:/var/www/html trafex/php-nginx
+# docker run --name redlock-web-2.0 -d php:8.1.19RC1-zts-bullseye
