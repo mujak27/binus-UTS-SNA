@@ -8,7 +8,7 @@ RUN chmod -R 774 .
 COPY /app/ /var/www/html/
 
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get install nginx
 
 CMD [ "php", "-S 127.0.0.1:3500" ]
 CMD  tail -f /dev/null

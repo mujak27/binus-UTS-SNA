@@ -1,8 +1,6 @@
 • Konten dari web harus di copy menggunakan perintah dari dalam dockerfile 
 • Database sql langsung di import ke dalam database ketika dockerfile dijalankan 
 • Isi dari content “redlock-web-2.0” adalah tampilan dari keseluruhan isi table “users” dengan format bebas dan tidak ada minimal data 
-• Command docker exec tidak boleh sama sekali dijalankan 
-• Command -v dari docker run tidak boleh dipakai, semua bisa dijalankan melalui dockerfile 
 
 
 
@@ -26,3 +24,10 @@ docker network create \
   --ip-range=172.28.5.0/24 \
   --gateway=172.28.5.254 \
   br0
+
+  
+• Buat suatu GIT (dianjurkan github) yang mempunyai konten dockerfile dari “redlockweb-2.0” 
+• Buat file PHP baru untuk di patching ke “redlock-web-2.0” menggunakan Jenkins 
+• Konten dari file PHP menampilkan total jumlah user yang ada di database 
+• File PHP automatis ditambahkan ketika melakukan git push ke GIT anda. 
+• Docker Image harus menggunakan dockerfile 

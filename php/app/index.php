@@ -2,7 +2,7 @@
 //These are the defined authentication environment in the db service
 
 // The MySQL service named in the docker-compose.yml.
-$host = 'localhost';
+$host = 'netmysq';
 
 // Database use name
 $user = 'root';
