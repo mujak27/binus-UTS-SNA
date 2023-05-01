@@ -1,15 +1,11 @@
 FROM mysql
 
+COPY ./mysqld.cnf /etc/mysql/conf.d/my.cnf
+COPY ./my.cnf /etc/my.cnf
 
-COPY ./redlock.sql .
-
-ENV MYSQL_ROOT_PASSWORD=
+ENV MYSQL_ROOT_PASSWORD=root
 ENV MYSQL_DATABASE=redlock
 ENV MYSQL_USER=user
 ENV MYSQL_PASSWORD=password
 
-
-
-# CMD  yes '' | mysql -u root -p redlock < ./redlock.sql
-# CMD  tail -f /dev/null
-COPY ./mysql /var/lib/mysql
+COPY ./redlock.sql /docker-entrypoint-initdb.d/init.sql
